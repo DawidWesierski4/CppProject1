@@ -25,9 +25,9 @@ public:
     double modul();
     Liczba(double re);
     ~Liczba(void);
-    friend std::ostream & operator<< (std::ostream &out, Liczba &l);
+    friend std::ostream & operator<<(std::ostream &out, Liczba &l);
 
-    void wypisz(std::ostream &out)
+    void wypisz(std::ostream &out) 
     {
         out<<*this;
     }
