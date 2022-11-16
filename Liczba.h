@@ -15,8 +15,9 @@ class Wartosc_Liczbowa
 class Liczba : public Wartosc_Liczbowa
 {
     double re; //czesc rzeczywista 
+
 public:
-    Liczba operator+(Liczba & right)
+    Liczba operator+(Liczba &right)
     {
         return Liczba (this->re+right.re);
     }
