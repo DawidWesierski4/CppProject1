@@ -12,19 +12,19 @@ Liczba::Liczba(double re)
 
 Liczba::~Liczba(void)
 {
-    std::cout<<re<<std::endl;
+    std::cout<<this->re<<std::endl;
     std::cout<<modul()<<std::endl;
 }
 
 double Liczba::modul()
 {
-    //TODO 2
+    std::cout<<this->re;
 }
 
 
 std::ostream & operator<<(std::ostream &out, Liczba &l)
 {
-out<<"Liczba rzeczywista: " << l.re<<"\n";
-return out;
+    out<<"Liczba rzeczywista: " << l.re<<"\n";
+    return out;
 }
 
