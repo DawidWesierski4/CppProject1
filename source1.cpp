@@ -13,7 +13,7 @@ Liczba::Liczba(double re)
 Liczba::~Liczba(void)
 {
 
-    std::cout<<"this object re value is:"<<this->re<<std::endl;
+    std::cout<<"Destruktor Liczba:"<<this->re<<std::endl;
 }
 
 double Liczba::modul()
@@ -24,19 +24,20 @@ double Liczba::modul()
 
 std::ostream & operator<<(std::ostream &out, Liczba &l)
 {
-    out<<"Liczba rzeczywista: " << l.re<<"\n";
+    out<<"Liczba rzeczywista: "<< l.re<<"\n";
     return out;
 }
 
 Complex::~Complex()
 {
-	std::cout << "Destruktor realis: " << this->re << ", imaginalis: " << this->im << std::endl;
+	std::cout << "Destruktor Complex re: " << this->re << ", im: " << this->im << std::endl;
 }
 
 Complex::Complex(double re, double im) 
 {
 	this->re = re;
 	this->im = im;
+	std::cout << "Konstruktor Complex re: " << this->re << ", im: " << this->im << std::endl;
 }
 
 Complex Complex::operator +(Complex & right) 
@@ -51,20 +52,37 @@ double Complex::modul()
 
 std::ostream & operator<< (std::ostream & out, Complex & a)
 {
-	out << "re: " << a.re << ", im: " << a.im << std::endl;
+	out << "re: " << a.re << ", im: " << a.im << "\n";
 	return out;
 }
 
 int main()
 {
-    Liczba* obj1 = new Liczba(1);
-    Liczba* obj2 = new Liczba(2);
+    Liczba obj1(1);
+    Liczba obj2(2);
+    Complex obj3(3,5);
+    Complex obj4(4,6);
+    int i;
+    Wartosc_Liczbowa *egzmp[4] = {
+        new Liczba(6),
+        new Liczba(7),
+        new Complex(8, 10),
+        new Complex(9,20)
+    };
 
-    std::cout<<"this: "<<*obj2<<std::endl;
-    std::cout<<"this: "<<*obj1<<std::endl;
+    for (i = 0; i < 4; i++) {
+        std::cout<<"-------------dyn "<<i<<"----------------------"<<std::endl;
+		egzmp[i]->modul();
+		(*egzmp[i]).wypisz(std::cout);
+        std::cout<<egzmp[i]<<std::endl;
+        delete(egzmp[i]);
+    }
 
-    delete(obj1);
-    delete(obj2);
+    std::cout<<"----------------------------------------------------------"<<std::endl;
+
+
+
+    std::cout<<"----------------------------------------------------------"<<std::endl;
 
     return 0;
 }
