@@ -1,5 +1,6 @@
 #include "Liczba.h"
 #include <iostream>
+#include <math.h>
 
 
 Liczba::Liczba(double re)
@@ -25,6 +26,33 @@ std::ostream & operator<<(std::ostream &out, Liczba &l)
 {
     out<<"Liczba rzeczywista: " << l.re<<"\n";
     return out;
+}
+
+Complex::~Complex()
+{
+	std::cout << "Destruktor realis: " << this->re << ", imaginalis: " << this->im << std::endl;
+}
+
+Complex::Complex(double re, double im) 
+{
+	this->re = re;
+	this->im = im;
+}
+
+Complex Complex::operator +(Complex & right) 
+{
+	return Complex(this->re + right.re, this->im + right.im);
+}
+
+double Complex::modul()
+{
+	return sqrt(im * im + re * re);
+}
+
+std::ostream & operator<< (std::ostream & out, Complex & a)
+{
+	out << "re: " << a.re << ", im: " << a.im << std::endl;
+	return out;
 }
 
 int main()
